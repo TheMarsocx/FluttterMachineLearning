@@ -1,0 +1,8 @@
+<application>
+   
+     <meta-data
+     
+            android:name="com.google.firebase.ml.vision.DEPENDENCİES"
+            android:value="ocr"/>
+
+     </application>  
