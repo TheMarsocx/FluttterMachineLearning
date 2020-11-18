@@ -1,0 +1,90 @@
+final File imageFile = getImageFile();
+
+final FirebaseVisionImage visionImage = 
+
+FirebaseVisionImage.fromFile(imageFile);
+
+final BarcodeDetector barcodeDetector =                                             
+    FirebaseVision.instance.barcodeDetector();
+final ImageLabeler cloudLabeler = 
+    FirebaseVision.instance.cloudImageLabeler();
+final FaceDetector faceDetector = 
+    FirebaseVision.instance.faceDetector();
+final ImageLabeler labeler = FirebaseVision.instance.imageLabeler();
+final TextRecognizer textRecognizer = 
+    FirebaseVision.instance.textRecognizer();
+final ImageLabeler labeler = 
+
+FirebaseVision.instance.imageLabler(ImageLabelerOptions(confidenceThreshold: 0.75),
+
+);
+final List<Barcode> barcodes = await 
+   barcodeDetector.detectInImage(visionImage)   
+final List<ImageLabel> cloudLabels = await 
+   cloudLabeler.processImage(visionImage);
+final List<Face> faces = await faceDetector.processImage(visionImage);
+final List<ImageLabel> labels = await 
+   labeler.processImage(visionImage);
+final VisionText visionText = await 
+textRecognizer.processImage(visionImage);
+for (Barcode barcode in barcodes) {    
+  final Rectangle<int> boundingBox = barcode.boundingBox; 
+      final List<Point<int>> cornerPoints = barcode.cornerPoints;
+    final String rawValue = barcode.rawValue;  
+  final BarcodeValueTypevalueType = barcode.valueType;  
+
+switch (valueType) {
+
+  case BarcodeValueType.wifi:
+    final String ssid = barcode.wifi.ssid;
+       final String password = barcode.wifi.password;
+    final BarcodeWiFiEncryptionType type = barcode.wifi.encryptionType;
+   break;
+ 
+ case BarcodeValueType.url:
+     final String title = barcode.url.title;
+       final String url = barcode.url.url;
+   break;
+  
+   }
+ 
+ }       
+ for (Face face in faces) {
+
+     final Rectangle<int> boundingBox = face.boundingBox;
+   final double rotY = face.headEulerAngleY; // Bu kod parçası Y ekseninde döndürür
+       
+  
+   final double rotZ = face.headEulerAngleZ; 
+ 
+ FaceDetectorOptions (mouth, ears,
+  //Gözleri,yanakları ve burunu tanır):
+ 
+   final FaceLandmark leftEar = 
+ face.getLandmark(FaceLandmarkType.leftEar);
+    
+      if (leftEar != null) {
+       final Point<double> leftEarPos = leftEar.position;
+     }  
+      if (face.smilingProbability != null) {
+         final double smileProb = face.smilingProbability;
+      }  
+      if (face.trackingId != null) {
+           final int id = face.trackingId;
+      
+      }
+     
+ }
+ barcodeDetector.close();
+
+cloudLabeler.close();
+
+faceDetector.close();
+
+labeler.close();
+
+textRecognizer.close();
+
+
+ 
+  
