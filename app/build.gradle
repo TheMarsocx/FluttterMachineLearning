@@ -1,0 +1,7 @@
+        apply plugin: 'com.android.application'
+          //Bu  satırı ekleyin.
+        apply plugin: 'com.google.gms.google-services'
+
+        dependencies{
+
+}       
