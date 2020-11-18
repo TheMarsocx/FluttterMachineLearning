@@ -1,0 +1,15 @@
+buildscript{
+   repositories{
+     //Aşağıdaki satıra sahip olup olmadığınızı kontrol edin.
+     google() //Google maven deposu.
+   }
+   dependencies{
+        }     
+    }
+    
+    allprojects{
+        repositories{
+     }    
+    
+}
+    
